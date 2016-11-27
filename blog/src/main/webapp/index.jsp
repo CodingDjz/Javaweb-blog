@@ -19,5 +19,6 @@ body {
 </head>
 <body>
 <p>Hello SpringMVC</p>
+<a href="./saveArticle">saveArticle</a>
 </body>
 </html>

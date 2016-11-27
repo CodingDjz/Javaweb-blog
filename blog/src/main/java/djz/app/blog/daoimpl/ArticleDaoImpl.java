@@ -21,7 +21,7 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 		Session session = this.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		session.save(article);
-		transaction.commit();		
+		transaction.commit();
 
 	}
 
@@ -31,40 +31,39 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 		Transaction transaction = session.beginTransaction();
 		Article article = new Article(articleId);
 		session.delete(article);
-		transaction.commit();		
+		transaction.commit();
 	}
 
 	@Override
 	public void updateArticle(Article article) {
-		
+
 		Session session = this.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		session.update(article);
-		transaction.commit();	
+		transaction.commit();
 	}
 
 	@Override
 	public Article queryArticle(Long articleId) {
-		  Session session = this.getCurrentSession();  
-	        Transaction transaction = (Transaction) session.beginTransaction();  
-	        Article article = (Article)session.get(Article.class, articleId);  
-	       
-	        	transaction.commit(); 	      	      
-	        return article;  
+		Session session = this.getCurrentSession();
+		Transaction transaction = (Transaction) session.beginTransaction();
+		Article article = (Article) session.get(Article.class, articleId);
+
+		transaction.commit();
+		return article;
 	}
 
-	
 	@Override
 	public ArrayList<Article> getAllArticles() {
 		ArrayList<Article> articles = new ArrayList<>();
 		Session session = this.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		List list= session.createQuery("from article").list();	
-		  for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
-	            Article a = (Article) iterator.next();  
-	            articles.add(a);  
-	        } 
-		transaction.commit();		
+		List list = session.createQuery("from article").list();
+		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+			Article a = (Article) iterator.next();
+			articles.add(a);
+		}
+		transaction.commit();
 		return articles;
 	}
 
