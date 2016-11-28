@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import djz.app.blog.dao.ArticleDao;
 import djz.app.blog.model.Article;
@@ -14,9 +16,11 @@ import djz.app.blog.util.HibernateDaoSupport;
 
 @SuppressWarnings("all")
 @Repository("articleDao")
+@Transactional
 public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 
 	@Override
+	@Transactional
 	public void saveArticle(Article article) {
 		Session session = this.getCurrentSession();
 		Transaction transaction = session.beginTransaction();

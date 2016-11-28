@@ -14,10 +14,14 @@ public class MainController {
 	@Autowired
 	ArticleService articleService;
 
-	@RequestMapping("/main")
+	@RequestMapping("/saveDB")
 	public ModelAndView articleList(Article article) {
+		System.out.println(article.getCategory());
+		System.out.println(article.getIsOriginal());
+		System.out.println(article.getTitle());
 		ModelAndView mav = new ModelAndView();
 		// 操作
+		articleService.saveArticle(article);
 		return mav;
 	}
 
