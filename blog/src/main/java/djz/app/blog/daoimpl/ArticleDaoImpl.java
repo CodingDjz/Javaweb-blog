@@ -20,40 +20,31 @@ import djz.app.blog.util.HibernateDaoSupport;
 public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 
 	@Override
-	@Transactional
 	public void saveArticle(Article article) {
 		Session session = this.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		session.save(article);
-		transaction.commit();
 
 	}
 
 	@Override
 	public void deleteArticle(Long articleId) {
 		Session session = this.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		Article article = new Article(articleId);
 		session.delete(article);
-		transaction.commit();
 	}
 
 	@Override
 	public void updateArticle(Article article) {
 
 		Session session = this.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		session.update(article);
-		transaction.commit();
 	}
 
 	@Override
 	public Article queryArticle(Long articleId) {
 		Session session = this.getCurrentSession();
-		Transaction transaction = (Transaction) session.beginTransaction();
 		Article article = (Article) session.get(Article.class, articleId);
 
-		transaction.commit();
 		return article;
 	}
 
@@ -61,13 +52,11 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 	public ArrayList<Article> getAllArticles() {
 		ArrayList<Article> articles = new ArrayList<>();
 		Session session = this.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
-		List list = session.createQuery("from article").list();
+		List list = session.createQuery("from Article").list();
 		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
 			Article a = (Article) iterator.next();
 			articles.add(a);
 		}
-		transaction.commit();
 		return articles;
 	}
 

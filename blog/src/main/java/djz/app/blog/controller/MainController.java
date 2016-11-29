@@ -1,5 +1,7 @@
 package djz.app.blog.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,15 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		// 操作
 		articleService.saveArticle(article);
+		return mav;
+	}
+
+	@RequestMapping("/queryDB")
+	public ModelAndView queryDB() {
+		ModelAndView mav = new ModelAndView();
+		ArrayList<Article> articles = articleService.getAllArticles();
+		mav.addObject("articles", articles);
+		mav.setViewName("queryDB");
 		return mav;
 	}
 
