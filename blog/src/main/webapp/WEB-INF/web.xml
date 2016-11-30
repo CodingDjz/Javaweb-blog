@@ -1,14 +1,14 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<!-- 加载所需资源，这里用格式指代全部 -->
 	<display-name>D BLOG</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spirng-hbm.xml,classpath:spring-dispatcher.xml</param-value>
 	</context-param>
+	<!-- 编码字符集 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -47,4 +47,6 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	<!-- 识别EL表达式 <jsp-config> <jsp-property-group> <el-ignored>false</el-ignored> 
+		</jsp-property-group> </jsp-config> -->
 </web-app>
