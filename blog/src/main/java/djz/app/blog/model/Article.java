@@ -19,7 +19,7 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.AUTO) // 自动增长
 	private Long id;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "create_time")
+	@Column(name = "create_time", nullable = false)
 	private Date createTime;
 	@Column(name = "title")
 	private String title;
@@ -33,9 +33,11 @@ public class Article {
 	public Article() {
 		super();
 	}
-	public Article(Long id){
-		this.id=id;
+
+	public Article(Long id) {
+		this.id = id;
 	}
+
 	public Long getId() {
 		return id;
 	}

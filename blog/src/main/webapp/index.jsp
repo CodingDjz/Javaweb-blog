@@ -4,17 +4,21 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8" />
-<title>Blog title</title>
-<link rel="stylesheet"
-	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script
-	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<title>Djz Blog</title>
 </head>
 <body>
-	<p>Hello SpringMVC</p>
-	<a href="./saveArticle">saveArticle</a>
+	<!-- style="background-image: url('/image/welcomebgp.png'); no-repeat;"> -->
+	<table>
+		<tr>
+			<td>111111111111</td>
+			<td>
+				<img src="./image/welcomebgp.png" />
+			</td>
+		</tr>
+	</table>
+
+	<%
+		out.println(request.getContextPath());
+	%>
 </body>
 </html>
