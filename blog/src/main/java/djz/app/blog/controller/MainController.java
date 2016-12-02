@@ -16,6 +16,20 @@ public class MainController {
 	@Autowired
 	ArticleService articleService;
 
+	/**
+	 * 显示主界面文章列表
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/main")
+	public ModelAndView MainView() {
+		ModelAndView mav = new ModelAndView();
+		ArrayList<Article> articles = articleService.getAllArticles();
+		mav.addObject("articles", articles);
+		mav.setViewName("main");
+		return mav;
+	}
+
 	@RequestMapping("/saveDB")
 	public ModelAndView articleList(Article article) {
 		System.out.println(article.getCategory());

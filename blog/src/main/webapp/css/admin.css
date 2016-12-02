@@ -1,0 +1,9 @@
+body {
+	background-image: url('../image/admin-bgp.png');
+	background-size: cover;
+}
+
+table {
+    margin-right: auto;
+    margin-left: auto;
+}

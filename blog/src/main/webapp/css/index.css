@@ -1,0 +1,38 @@
+body {
+	background-image: url('../image/welcome.png');
+	background-size: cover;
+}
+
+#title {
+	color: #fff;
+	font-family: Cursive;
+	text-align: center;
+}
+
+#click_in {
+	color: #fff;
+	font-family: Cursive;
+	text-align: center;
+}
+/*点击前*/
+a:link {
+	font-size: 15pt;
+	color: #ccc;
+	text-decoration: underline;
+	TEXT-DECORATION: none;
+}
+/*点击后*/
+a:visited {
+	font-size: 15pt;
+	color: #ccc;
+	text-decoration: underline;
+	TEXT-DECORATION: none;
+}
+/*悬停*/
+a:hover {
+	font-size: 15pt;
+	color: #f00;
+	text-decoration: underline;
+	TEXT-DECORATION: none;
+}
+/*点击时 a:active*/

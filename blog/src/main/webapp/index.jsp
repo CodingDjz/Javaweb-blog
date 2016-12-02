@@ -4,21 +4,18 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8" />
-<title>Djz Blog</title>
+<title>知道的主页</title>
+<link href="./css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<!-- style="background-image: url('/image/welcomebgp.png'); no-repeat;"> -->
-	<table>
-		<tr>
-			<td>111111111111</td>
-			<td>
-				<img src="./image/welcomebgp.png" />
-			</td>
-		</tr>
-	</table>
+	<div id="title">
+		<h1>知道博客</h1>
+	</div>
 
-	<%
-		out.println(request.getContextPath());
-	%>
+	<div>
+		<h3 id="click_in">
+			<a href="<%=request.getContextPath()%>/main">点击进入</a>
+		</h3>
+	</div>
 </body>
 </html>
