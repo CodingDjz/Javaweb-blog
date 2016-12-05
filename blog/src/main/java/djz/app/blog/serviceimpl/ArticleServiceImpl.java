@@ -1,8 +1,7 @@
 package djz.app.blog.serviceimpl;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
@@ -14,8 +13,8 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 
 	@Override
 	public Serializable save(Article entity) {
-		Calendar calendar = new GregorianCalendar();
-		entity.setCreateTime(calendar.getTime());
+		Date date = new Date();
+		entity.setCreateTime(date);
 		return super.save(entity);
 	}
 

@@ -56,7 +56,7 @@
 				<c:forEach items="${articles}" var="article">
 					<tr>
 						<td><a href="${article.contentPath}">${article.title}</a></td>
-						<td>${article.category}</td>
+						<td>${article.createTime}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
