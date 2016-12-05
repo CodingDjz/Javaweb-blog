@@ -18,7 +18,7 @@ public class Article {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO) // 自动增长
 	private Long id;
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "create_time", nullable = false)
 	private Date createTime;
 	@Column(name = "title")

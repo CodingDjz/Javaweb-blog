@@ -24,7 +24,8 @@ public class MainController {
 	@RequestMapping("/main")
 	public ModelAndView MainView() {
 		ModelAndView mav = new ModelAndView();
-		ArrayList<Article> articles = articleService.getAllArticles();
+
+		ArrayList<Article> articles = (ArrayList<Article>) articleService.findByHQL("from Article", null);
 		mav.addObject("articles", articles);
 		mav.setViewName("main");
 		return mav;
@@ -37,14 +38,14 @@ public class MainController {
 		System.out.println(article.getTitle());
 		ModelAndView mav = new ModelAndView();
 		// 操作
-		articleService.saveArticle(article);
+		articleService.save(article);
 		return mav;
 	}
 
 	@RequestMapping("/queryDB")
 	public ModelAndView queryDB() {
 		ModelAndView mav = new ModelAndView();
-		ArrayList<Article> articles = articleService.getAllArticles();
+		ArrayList<Article> articles = (ArrayList<Article>) articleService.findByHQL("from Article", null);
 		mav.addObject("articles", articles);
 		mav.setViewName("queryDB");
 		return mav;
