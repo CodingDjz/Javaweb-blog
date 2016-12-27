@@ -17,7 +17,19 @@ import javax.persistence.Table;
 // @Table(name = "admin")
 public class Admin {
 
-	// @Column(name = "level")
-	private Integer level = 0;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	@Column(name = "account", nullable = false)
+	private String account;
+	@Column(name = "password", nullable = false)
+	private String password;
+	@Column(name = "name")
+	private String name;
+	@Column(name = "level")
+	private Integer level;
+	
+	
 
 }

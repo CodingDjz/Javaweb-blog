@@ -27,7 +27,7 @@ public class ArticleController {
 
 		ArrayList<Article> articles = (ArrayList<Article>) articleService.findByHQL("from Article", null);
 		mav.addObject("articles", articles);
-		mav.setViewName("main");
+		mav.setViewName("article");
 		return mav;
 	}
 

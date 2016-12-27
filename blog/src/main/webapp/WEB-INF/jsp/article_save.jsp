@@ -12,7 +12,7 @@ body {
 </style>
 </head>
 <body>
-	<form action="<%=request.getContextPath() %>/saveDB" method="post">
+	<form action="./saveDB" method="post">
 		文章名：<input type="text" name="title" value="文章"><br> 类别：<input
 			type="text" name="category" value="2"><br> 内容路径：<input type="text"
 			name="contentPath" value="www.baidu.com"><br> <input type="radio"
