@@ -12,7 +12,7 @@ import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
 
 @Controller
-public class MainController {
+public class ArticleController {
 	@Autowired
 	ArticleService articleService;
 
