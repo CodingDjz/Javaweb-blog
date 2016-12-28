@@ -1,5 +1,6 @@
 package djz.app.blog.model;
 
+import java.io.File;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "article")
@@ -25,6 +27,8 @@ public class Article {
 	private String title;
 	@Column(name = "content_path")
 	private String contentPath;
+	@Transient
+	private File contentFile;
 	@Column(name = "category")
 	private Integer category;
 	@Column(name = "is_original")

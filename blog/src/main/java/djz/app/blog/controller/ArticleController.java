@@ -2,11 +2,14 @@ package djz.app.blog.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.MvcNamespaceHandler;
 
 import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
@@ -30,9 +33,15 @@ public class ArticleController {
 		mav.setViewName("article");
 		return mav;
 	}
-
-	@RequestMapping("/saveDB")
-	public ModelAndView articleList(Article article) {
+	/**
+	 * 将文章保存到数据库
+	 * @param article
+	 * @return
+	 */
+	@RequestMapping(path ="/saveArticleToDB",method=RequestMethod.POST)
+	public ModelAndView articleList(MultipartFile contentFile, HttpServletRequest request,Article article) {
+		String contentPath = articleService.saveArticleContentFile(contentFile);
+//		System.out.println(file.getName());
 		System.out.println(article.getCategory());
 		System.out.println(article.getIsOriginal());
 		System.out.println(article.getTitle());
@@ -54,7 +63,7 @@ public class ArticleController {
 	@RequestMapping("/saveArticle")
 	public ModelAndView saveArticleView() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/info");
+		mav.setViewName("/article_save");
 		return mav;
 	}
 }

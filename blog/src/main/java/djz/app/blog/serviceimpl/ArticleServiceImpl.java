@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
@@ -16,6 +17,10 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 		Date date = new Date();
 		entity.setCreateTime(date);
 		return super.save(entity);
+	}
+
+	public String saveArticleContentFile(MultipartFile contentFile) {
+		return "";
 	}
 
 	// @Resource

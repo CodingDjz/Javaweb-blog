@@ -5,20 +5,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Save Article</title>
+<link rel="stylesheet"
+	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/article_save.css">
+<script
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-body {
-	background-image: url(../image/index_bgp1.jpg);
-}
 </style>
 </head>
 <body>
-	<form action="./saveDB" method="post">
-		文章名：<input type="text" name="title" value="文章"><br> 类别：<input
-			type="text" name="category" value="2"><br> 内容路径：<input type="text"
-			name="contentPath" value="www.baidu.com"><br> <input type="radio"
-			name="isOriginal" value="true" checked="checked"> 原创 <input type="radio"
-			name="isOriginal" value="false"> 转载<br> <input
-			type="submit" value="保存文章">
-	</form>
+	<div id="aboveDiv">文章录入</div>
+	<div id="mainDiv">
+		<form action="<%=request.getContextPath()%>/saveArticleToDB"
+			method="post" enctype="multipart/form-data" role="form">
+			<div class="form-group">
+				<label for="title" class="control-label">标题</label> <input
+					type="text" name="title" class="form-control" id="title"
+					placeholder="文章标题">
+			</div>
+			<div class="form-group">
+				<label for="category" class="control-label">类别</label> <input
+					type="text" name="category" class="form-control" id="category"
+					placeholder="文章分类">
+			</div>
+			<div class="form-group">
+				<label for="article_file">内容文件</label> <input type="file"
+					id="article_file" name="contentFile">
+			</div>
+			<div class="form-group">
+				<label for="original">原创 </label> <input id="original" type="radio"
+					name="isOriginal" value="true" checked="checked"> <label
+					for="transhipment">转载 </label> <input id="transhipment"
+					type="radio" name="isOriginal" value="false">
+			</div>
+			<div>
+				<input type="submit" class="btn btn-default" value="保存">
+			</div>
+
+		</form>
+	</div>
 </body>
 </html>
