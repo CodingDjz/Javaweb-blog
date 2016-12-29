@@ -33,21 +33,21 @@ public class ArticleController {
 		mav.setViewName("article");
 		return mav;
 	}
+
 	/**
 	 * 将文章保存到数据库
+	 * 
 	 * @param article
 	 * @return
 	 */
-	@RequestMapping(path ="/saveArticleToDB",method=RequestMethod.POST)
-	public ModelAndView articleList(MultipartFile contentFile, HttpServletRequest request,Article article) {
-		String contentPath = articleService.saveArticleContentFile(contentFile);
-//		System.out.println(file.getName());
-		System.out.println(article.getCategory());
-		System.out.println(article.getIsOriginal());
-		System.out.println(article.getTitle());
-		ModelAndView mav = new ModelAndView();
-		// 操作
+	@RequestMapping(path = "/saveArticleToDB", method = RequestMethod.POST)
+	public ModelAndView articleList(MultipartFile contentFile, HttpServletRequest request, Article article) {
+		articleService.saveArticleContentFile(contentFile, request);
+		articleService.setArticleValue(article);
 		articleService.save(article);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("status_msg","success");
+		mav.setViewName("operation_result");
 		return mav;
 	}
 

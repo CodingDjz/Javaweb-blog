@@ -1,57 +1,61 @@
 package djz.app.blog.serviceimpl;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
+import djz.app.blog.util.ConstantCollection;
 
 @Service
 public class ArticleServiceImpl extends BaseServiceImpl<Article> implements ArticleService {
 
+	String contentPath;
+
 	@Override
 	public Serializable save(Article entity) {
-		Date date = new Date();
-		entity.setCreateTime(date);
 		return super.save(entity);
 	}
 
-	public String saveArticleContentFile(MultipartFile contentFile) {
-		return "";
+	/**
+	 * 保存上传的文章内容文件到WEB-INF的article下
+	 * 
+	 * @param contentFile
+	 * @param request
+	 * @return
+	 */
+	public void saveArticleContentFile(MultipartFile contentFile, HttpServletRequest request) {
+		if (contentFile == null) {
+			return;
+		}
+		// 这里没有/blog
+		String relativePath = ConstantCollection.ARTICLE_FILE_PATH + File.separator + contentFile.getOriginalFilename();
+		// E:\tomcat\apache-tomcat-7.0.72\webapps\blog\
+		String realPath = request.getServletContext().getRealPath(relativePath);
+		File file = new File(realPath);
+		// ！web项目取到的是eclipse所在目录！
+		// System.out.println(System.getProperty("user.dir"));
+		try {
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			contentFile.transferTo(file);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		contentPath = relativePath;
 	}
 
-	// @Resource
-	// ArticleDao articleDao;
-	//
-	// @Override
-	// public void saveArticle(Article article) {
-	// articleDao.saveArticle(article);
-	//
-	// }
-	//
-	// @Override
-	// public void deleteArticle(Long articleId) {
-	// articleDao.deleteArticle(articleId);
-	//
-	// }
-	//
-	// @Override
-	// public void updateArticle(Article article) {
-	// articleDao.updateArticle(article);
-	//
-	// }
-	//
-	// @Override
-	// public Article queryArticle(Long articleId) {
-	// return articleDao.queryArticle(articleId);
-	// }
-	//
-	// @Override
-	// public ArrayList<Article> getAllArticles() {
-	// return articleDao.getAllArticles();
-	// }
-
+	public void setArticleValue(Article article) {
+		Date date = new Date();
+		article.setCreateTime(date);
+		article.setContentPath(contentPath);
+	}
 }

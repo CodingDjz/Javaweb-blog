@@ -27,8 +27,6 @@ public class Article {
 	private String title;
 	@Column(name = "content_path")
 	private String contentPath;
-	@Transient
-	private File contentFile;
 	@Column(name = "category")
 	private Integer category;
 	@Column(name = "is_original")
