@@ -14,9 +14,9 @@ import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
 import djz.app.blog.util.ConstantCollection;
 
-@Service
+@Service("articleService")
 public class ArticleServiceImpl extends BaseServiceImpl<Article> implements ArticleService {
-
+	
 	String contentPath;
 
 	@Override

@@ -2,9 +2,9 @@ package djz.app.blog.controller;
 
 import java.util.ArrayList;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +15,9 @@ import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
 
 @Controller
+@RequestMapping("/article")
 public class ArticleController {
-	@Autowired
+	@Resource(name="articleService")
 	ArticleService articleService;
 
 	/**
@@ -40,7 +41,7 @@ public class ArticleController {
 	 * @param article
 	 * @return
 	 */
-	@RequestMapping(path = "/saveArticleToDB", method = RequestMethod.POST)
+	@RequestMapping(path = "/saveDB", method = RequestMethod.POST)
 	public ModelAndView articleList(MultipartFile contentFile, HttpServletRequest request, Article article) {
 		articleService.saveArticleContentFile(contentFile, request);
 		articleService.setArticleValue(article);
@@ -50,17 +51,17 @@ public class ArticleController {
 		mav.setViewName("operation_result");
 		return mav;
 	}
+//
+//	@RequestMapping("/queryList")
+//	public ModelAndView queryDB() {
+//		ModelAndView mav = new ModelAndView();
+//		ArrayList<Article> articles = (ArrayList<Article>) articleService.findByHQL("from Article", null);
+//		mav.addObject("articles", articles);
+//		mav.setViewName("queryDB");
+//		return mav;
+//	}
 
-	@RequestMapping("/queryDB")
-	public ModelAndView queryDB() {
-		ModelAndView mav = new ModelAndView();
-		ArrayList<Article> articles = (ArrayList<Article>) articleService.findByHQL("from Article", null);
-		mav.addObject("articles", articles);
-		mav.setViewName("queryDB");
-		return mav;
-	}
-
-	@RequestMapping("/saveArticle")
+	@RequestMapping("/save")
 	public ModelAndView saveArticleView() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/article_save");

@@ -20,45 +20,4 @@ import djz.app.blog.util.HibernateDaoSupport;
 @Transactional
 public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao {
 
-	// @Override
-	// public Serializable save(Article article) {
-	// Session session = this.getCurrentSession();
-	// return session.save(article);
-	//
-	// }
-	//
-	// @Override
-	// public void delete(Long articleId) {
-	// Session session = this.getCurrentSession();
-	// Article article = new Article(articleId);
-	// session.delete(article);
-	// }
-	//
-	// @Override
-	// public void updateArticle(Article article) {
-	//
-	// Session session = this.getCurrentSession();
-	// session.update(article);
-	// }
-	//
-	// @Override
-	// public Article queryArticle(Long articleId) {
-	// Session session = this.getCurrentSession();
-	// Article article = (Article) session.get(Article.class, articleId);
-	//
-	// return article;
-	// }
-	//
-	// @Override
-	// public ArrayList<Article> getAllArticles() {
-	// ArrayList<Article> articles = new ArrayList<>();
-	// Session session = this.getCurrentSession();
-	// List list = session.createQuery("from Article").list();
-	// for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-	// Article a = (Article) iterator.next();
-	// articles.add(a);
-	// }
-	// return articles;
-	// }
-
 }

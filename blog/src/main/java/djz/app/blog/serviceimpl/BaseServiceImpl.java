@@ -9,7 +9,7 @@ import djz.app.blog.dao.BaseDao;
 import djz.app.blog.service.BaseService;
 
 public class BaseServiceImpl<T> implements BaseService<T> {
-	@Resource
+	@Resource(name="baseDao")
 	private BaseDao<T> dao;
 
 	@Override

@@ -13,8 +13,8 @@ import javax.persistence.Table;
  * @author Djz
  *
  */
-// @Entity
-// @Table(name = "admin")
+@Entity
+@Table(name = "admin")
 public class Admin {
 
 	@Id
@@ -29,7 +29,45 @@ public class Admin {
 	private String name;
 	@Column(name = "level")
 	private Integer level;
-	
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getLevel() {
+		return level;
+	}
+
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
 
 }

@@ -14,7 +14,7 @@
 
 	<div>
 		<h3 id="click_in">
-			<a href="<%=request.getContextPath()%>/main">点击进入</a>
+			<a href="<%=request.getContextPath()%>/article/main">点击进入</a>
 		</h3>
 	</div>
 </body>

@@ -8,23 +8,25 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import djz.app.blog.dao.BaseDao;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("all")
+@Repository("baseDao")
 @Transactional
 public class BaseDaoImpl<T> implements BaseDao<T> {
 
-	private Class<T> clazz;
+	private Class<T> clazz; 
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	public BaseDaoImpl() {
 
-		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
-		clazz = (Class<T>) type.getActualTypeArguments()[0];
-		System.out.println("DAO的实现类是：" + this.clazz.getName());
+//		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+//		clazz = (Class<T>) type.getActualTypeArguments()[0];
+//		System.out.println("DAO的实现类是：" + this.clazz.getName());
 	}
 
 	/**
@@ -73,9 +75,10 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	/**
 	 * 通过HQL进行查询
 	 */
+
 	@Override
 	public List<T> findByHQL(String hql, Object... params) {
-		Query query = this.getCurrentSession().createQuery(hql);
+		Query<T> query = this.getCurrentSession().createQuery(hql);
 		for (int i = 0; params != null && i < params.length; i++) {
 			query.setParameter(i, params);
 		}

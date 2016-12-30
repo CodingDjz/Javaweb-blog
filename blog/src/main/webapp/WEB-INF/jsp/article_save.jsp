@@ -19,7 +19,7 @@
 <body>
 	<div id="aboveDiv">文章录入</div>
 	<div id="mainDiv">
-		<form action="<%=request.getContextPath()%>/saveArticleToDB"
+		<form action="<%=request.getContextPath()%>/article/saveDB"
 			method="post" enctype="multipart/form-data" role="form">
 			<div class="form-group">
 				<label for="title" class="control-label">标题</label> <input
