@@ -1,5 +1,6 @@
 body {
-	text-align: center;
+	background-image: url("/blog/image/slight_bgp.jpg");
+	background-size: 100%;
 }
 
 #mainDiv {
@@ -7,7 +8,8 @@ body {
 	width: 400px;
 	height: 200px;
 }
-#aboveDiv{
+
+#aboveDiv {
 	font-size: 30px;
 	margin: 0 auto;
 	padding: 40px;

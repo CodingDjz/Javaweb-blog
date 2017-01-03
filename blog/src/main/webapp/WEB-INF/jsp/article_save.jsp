@@ -13,13 +13,11 @@
 	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style type="text/css">
-</style>
 </head>
 <body>
 	<div id="aboveDiv">文章录入</div>
 	<div id="mainDiv">
-		<form action="<%=request.getContextPath()%>/article/saveDB"
+		<form action="<%=request.getContextPath()%>/article/save"
 			method="post" enctype="multipart/form-data" role="form">
 			<div class="form-group">
 				<label for="title" class="control-label">标题</label> <input

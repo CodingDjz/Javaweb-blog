@@ -41,7 +41,7 @@ public class ArticleController {
 	 * @param article
 	 * @return
 	 */
-	@RequestMapping(path = "/saveDB", method = RequestMethod.POST)
+	@RequestMapping(path = "/save", method = RequestMethod.POST)
 	public ModelAndView articleList(MultipartFile contentFile, HttpServletRequest request, Article article) {
 		articleService.saveArticleContentFile(contentFile, request);
 		articleService.setArticleValue(article);
@@ -61,7 +61,7 @@ public class ArticleController {
 //		return mav;
 //	}
 
-	@RequestMapping("/save")
+	@RequestMapping("/savePage")
 	public ModelAndView saveArticleView() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/article_save");

@@ -1,0 +1,16 @@
+/*
+background-size：100%---按容器比例撑满，图片变形；
+background-size：cover---把背景图片放大到适合元素容器的尺寸，图片比例不变。
+*/
+body {
+	background-image: url("/blog/image/slight_bgp.jpg");
+	background-size: 100%;
+}
+
+#formDiv {
+	margin: 0 auto;
+	width: 400px;
+	height: 200px;
+	padding-top: 200px;
+	padding-bottom: 200px;
+}

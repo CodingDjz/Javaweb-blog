@@ -1,5 +1,7 @@
 package djz.app.blog.serviceimpl;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -36,6 +38,12 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 		return true;
 	}
 
+	/**
+	 * 用户登录
+	 * 
+	 * @param admin
+	 * @return
+	 */
 	@Override
 	public Admin login(Admin admin) {
 		boolean valiFlag = validateAdmin(admin);
@@ -44,6 +52,24 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 		} else {
 			return currentAdmin;
 		}
+	}
+
+	/**
+	 * 用户注册
+	 * 
+	 * @param admin
+	 * @return
+	 */
+	@Override
+	public boolean regist(Admin admin) {
+		String hql = "FROM admin WHERE account=?";
+		String[] params = { admin.getAccount() };
+		ArrayList<Admin> admins = (ArrayList<Admin>) adminDao.findByHQL(hql, params);
+		if (!admins.isEmpty()) {
+			return false;
+		}
+		Serializable id = adminDao.save(admin);
+		return true;
 	}
 
 }
