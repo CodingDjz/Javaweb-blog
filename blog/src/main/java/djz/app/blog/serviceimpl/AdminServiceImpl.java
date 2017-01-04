@@ -1,6 +1,7 @@
 package djz.app.blog.serviceimpl;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,12 @@ import org.springframework.stereotype.Service;
 import djz.app.blog.dao.AdminDao;
 import djz.app.blog.model.Admin;
 import djz.app.blog.service.AdminService;
-
+import djz.app.blog.util.AdminUtil;
+/**
+ * 登录注册  拦截器验证
+ * @author Administrator
+ *
+ */
 @Service("adminService")
 public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminService {
 
@@ -30,7 +36,7 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 	public boolean validateAdmin(Admin admin) {
 		String hql = "FROM Admin Where account=? AND password=?";
 		String[] params = { admin.getAccount(), admin.getPassword() };
-		List<Admin> admins = adminDao.findByHQL(hql, params);
+		ArrayList<Admin> admins = (ArrayList<Admin>) adminDao.findByHQL(hql, params);
 		if (admins.isEmpty()) {
 			return false;
 		}
@@ -70,6 +76,22 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 		}
 		Serializable id = adminDao.save(admin);
 		return true;
+	}
+
+	/**
+	 * 将Admin密码通过MD5加密
+	 * 
+	 * @param admin
+	 */
+	@Override
+	public void updateMD5Password(Admin admin) {
+		try {
+			String MD5Password = AdminUtil.MD5Encode(admin.getPassword());
+			admin.setPassword(MD5Password);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
