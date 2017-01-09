@@ -40,7 +40,7 @@
 					type="radio" name="isOriginal" value="false">
 			</div>
 			<div>
-				<input type="submit" class="btn btn-default" value="保存">
+				<input type="submit" class="btn btn-md btn-primary" value="保存">
 			</div>
 
 		</form>

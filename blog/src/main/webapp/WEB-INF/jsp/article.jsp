@@ -35,7 +35,7 @@
 				<li class=""><a
 					href="https://github.com/CodingDjz/MyGuitarMusic" target="_blank">吉他弹唱</a></li>
 				<li class="">&nbsp; &nbsp;</li>
-				<li class=""><a href="#" target="_blank">留言</a></li>
+				<li class=""><a href="<%=request.getContextPath() %>/article/savePage" target="_blank">留言</a></li>
 
 			</ul>
 		</div>

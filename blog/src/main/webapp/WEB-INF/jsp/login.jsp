@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>帅气管理员专用</title>
+<title>管理员登录</title>
 <link href="${pageContext.request.contextPath}/css/login.css"
 	rel="stylesheet" type="text/css" />
 
@@ -19,18 +19,21 @@
 
 	<div id="formDiv">
 
-		<form class="signin" action="form">
+		<form class="signin" method="post"
+			action="<%=request.getContextPath()%>/admin/login" accept-charset="UTF-8">
 			<h2 class="form-signin-heading">登录</h2>
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="请输入用户名" />
+				<input type="text" name="account" class="form-control"
+					placeholder="请输入用户名" />
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="请输入密码" />
+				<input type="password" name="password" class="form-control"
+					placeholder="请输入密码" />
 			</div>
 
-			<div class="form-group">
+			<div class="form-group" style="text-align: center;">
 				<input type="submit" class="btn btn-md btn-primary" value="登录">
-				<input type="button" class="btn btn-md btn-primary" value="注册">
+				<!-- <input type="button" class="btn btn-md btn-primary" value="注册"> -->
 			</div>
 		</form>
 	</div>

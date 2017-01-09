@@ -17,9 +17,9 @@ public class AdminUtil {
 		md5.update(text.getBytes());
 		byte[] md5Byte = md5.digest();
 		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i <= md5Byte.length; i++) {
+		for (int i = 0; i <= md5Byte.length - 1; i++) {
 			// 掩盖前面24位，去掉符号
-			String hex = Integer.toHexString(md5Byte[i] & 0xFf);
+			String hex = Integer.toHexString(md5Byte[i] & 0xFF);
 			if (hex.length() == 1) {
 				// 统一格式
 				sb.append("0");

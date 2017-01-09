@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
-import djz.app.blog.util.ConstantCollection;
+import djz.app.blog.util.ConstantSet;
 
 @Service("articleService")
 public class ArticleServiceImpl extends BaseServiceImpl<Article> implements ArticleService {
@@ -36,7 +36,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 			return;
 		}
 		// 这里没有/blog
-		String relativePath = ConstantCollection.ARTICLE_FILE_PATH + File.separator + contentFile.getOriginalFilename();
+		String relativePath = ConstantSet.ARTICLE_FILE_PATH + File.separator + contentFile.getOriginalFilename();
 		// E:\tomcat\apache-tomcat-7.0.72\webapps\blog\
 		String realPath = request.getServletContext().getRealPath(relativePath);
 		File file = new File(realPath);

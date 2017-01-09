@@ -8,17 +8,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import djz.app.blog.model.Admin;
 import djz.app.blog.service.AdminService;
+import djz.app.blog.util.ConstantSet;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 	@Resource(name = "adminService")
 	private AdminService adminService;
-	
+
+	/**
+	 * 跳转到登录界面
+	 * @return
+	 */
 	@RequestMapping("/loginPage")
 	public ModelAndView loginPage() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("login");
+		mav.setViewName(ConstantSet.LOGIN_VIEW);
 		return mav;
 	}
 
@@ -32,11 +37,18 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		Admin currentAdmin = adminService.login(admin);
 		if (currentAdmin != null) {
-			mav.addObject("status_msg", "登录失败，请重新尝试！");
+			mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.LOGIN_SUCCESS);
 		} else {
-			mav.addObject("status_msg", "登陆成功！");
+			mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.LOGIN_FAILD);
 		}
-		// TODO 返回界面
+		mav.setViewName(ConstantSet.ACTION_RESULT_VIEW);
+		return mav;
+	}
+	
+	@RequestMapping("/registPage")
+	public ModelAndView registPage(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(ConstantSet.REGIST_VIEW);
 		return mav;
 	}
 
@@ -51,11 +63,11 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		boolean registFlag = adminService.regist(admin);
 		if (registFlag) {
-			mav.addObject("status_msg", "注册成功！");
+			mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.REGIST_SUCCESS);
 		} else {
-			mav.addObject("status_msg", "注册失败！");
+			mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.REGIST_FAILD);
 		}
-		mav.setViewName("operation_result");
+		mav.setViewName(ConstantSet.ACTION_RESULT_VIEW);
 		return mav;
 	}
 

@@ -1,12 +1,11 @@
 package djz.app.blog.daoimpl;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,7 +79,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public List<T> findByHQL(String hql, Object... params) {
 		Query<T> query = this.getCurrentSession().createQuery(hql);
 		for (int i = 0; params != null && i < params.length; i++) {
-			query.setParameter(i, params);
+			query.setParameter(i, params[i]);
 		}
 		return query.list();
 	}

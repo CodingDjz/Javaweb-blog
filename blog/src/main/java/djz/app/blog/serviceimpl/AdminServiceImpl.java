@@ -14,8 +14,10 @@ import djz.app.blog.dao.AdminDao;
 import djz.app.blog.model.Admin;
 import djz.app.blog.service.AdminService;
 import djz.app.blog.util.AdminUtil;
+
 /**
- * 登录注册  拦截器验证
+ * 登录注册 拦截器验证
+ * 
  * @author Administrator
  *
  */
@@ -34,7 +36,7 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 	 */
 	@Override
 	public boolean validateAdmin(Admin admin) {
-		String hql = "FROM Admin Where account=? AND password=?";
+		String hql = "FROM Admin a WHERE a.account=? AND a.password=?";
 		String[] params = { admin.getAccount(), admin.getPassword() };
 		ArrayList<Admin> admins = (ArrayList<Admin>) adminDao.findByHQL(hql, params);
 		if (admins.isEmpty()) {
@@ -52,6 +54,7 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 	 */
 	@Override
 	public Admin login(Admin admin) {
+		updateMD5Password(admin);
 		boolean valiFlag = validateAdmin(admin);
 		if (valiFlag == false) {
 			return null;
@@ -68,6 +71,7 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 	 */
 	@Override
 	public boolean regist(Admin admin) {
+		updateMD5Password(admin);
 		String hql = "FROM admin WHERE account=?";
 		String[] params = { admin.getAccount() };
 		ArrayList<Admin> admins = (ArrayList<Admin>) adminDao.findByHQL(hql, params);
