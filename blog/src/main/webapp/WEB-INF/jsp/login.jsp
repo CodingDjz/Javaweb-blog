@@ -14,13 +14,15 @@
 	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/regist.js"></script>
 </head>
 <body>
 
 	<div id="formDiv">
 
 		<form class="signin" method="post"
-			action="<%=request.getContextPath()%>/admin/login" accept-charset="UTF-8">
+			action="<%=request.getContextPath()%>/admin/login"
+			accept-charset="UTF-8">
 			<h2 class="form-signin-heading">登录</h2>
 			<div class="form-group">
 				<input type="text" name="account" class="form-control"
@@ -33,7 +35,7 @@
 
 			<div class="form-group" style="text-align: center;">
 				<input type="submit" class="btn btn-md btn-primary" value="登录">
-				<!-- <input type="button" class="btn btn-md btn-primary" value="注册"> -->
+				<input type="button" onclick="registPage()"	class="btn btn-md btn-primary" value="注册"> 
 			</div>
 		</form>
 	</div>

@@ -48,7 +48,7 @@ public class AdminController {
 	@RequestMapping("/registPage")
 	public ModelAndView registPage(){
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(ConstantSet.REGIST_VIEW);
+		mav.setViewName(ConstantSet.ADMIN_ACTION_VIEW);
 		return mav;
 	}
 
