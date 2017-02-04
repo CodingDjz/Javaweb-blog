@@ -45,6 +45,7 @@ public class AdminController {
 		return mav;
 	}
 	
+	
 	@RequestMapping("/registPage")
 	public ModelAndView registPage(){
 		ModelAndView mav = new ModelAndView();
