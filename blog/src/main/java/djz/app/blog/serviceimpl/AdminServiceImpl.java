@@ -72,7 +72,7 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 	@Override
 	public boolean regist(Admin admin) {
 		updateMD5Password(admin);
-		String hql = "FROM admin WHERE account=?";
+		String hql = "FROM Admin WHERE account=?";
 		String[] params = { admin.getAccount() };
 		ArrayList<Admin> admins = (ArrayList<Admin>) adminDao.findByHQL(hql, params);
 		if (!admins.isEmpty()) {

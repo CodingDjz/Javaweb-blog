@@ -13,11 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
+import djz.app.blog.util.ConstantSet;
 
 @Controller
 @RequestMapping("/article")
 public class ArticleController {
-	@Resource(name="articleService")
+	@Resource(name = "articleService")
 	ArticleService articleService;
 
 	/**
@@ -47,19 +48,20 @@ public class ArticleController {
 		articleService.setArticleValue(article);
 		articleService.save(article);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("status_msg","success");
-		mav.setViewName("operation_result");
+		mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.SUCCESS_CODE);
+		mav.setViewName(ConstantSet.ACTION_RESULT_VIEW);
 		return mav;
 	}
-//
-//	@RequestMapping("/queryList")
-//	public ModelAndView queryDB() {
-//		ModelAndView mav = new ModelAndView();
-//		ArrayList<Article> articles = (ArrayList<Article>) articleService.findByHQL("from Article", null);
-//		mav.addObject("articles", articles);
-//		mav.setViewName("queryDB");
-//		return mav;
-//	}
+	//
+	// @RequestMapping("/queryList")
+	// public ModelAndView queryDB() {
+	// ModelAndView mav = new ModelAndView();
+	// ArrayList<Article> articles = (ArrayList<Article>)
+	// articleService.findByHQL("from Article", null);
+	// mav.addObject("articles", articles);
+	// mav.setViewName("queryDB");
+	// return mav;
+	// }
 
 	@RequestMapping("/savePage")
 	public ModelAndView saveArticleView() {

@@ -6,26 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <title>Insert title here</title>
-<style type="text/css">
-body {
-	text-align: center;
-}
-
-#result_msg {
-	text-align: center;
-	font-size: 30px;
-	height: 70px;
-	line-height: 70px;
-}
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/action_result.css">
+</link>
 </head>
 <body>
 	<div id="result_msg">
 		<c:choose>
-			<c:when test="${status_msg=='success'}">操作成功</c:when>
-			<c:when test="${status_msg=='faild' }">操作失败</c:when>
-			<c:otherwise>未知</c:otherwise>
+			<c:when test="${result_code==1}">操作成功!</c:when>
+			<c:when test="${result_code==2}">操作失败!</c:when>
+			<c:otherwise>未知错误</c:otherwise>
 		</c:choose>
+	</div>
+
+	<div id="back_div">
+		<a id="back_text" href="#" onclick="javascript:history.back(-1)">返回上页</a>
 	</div>
 </body>
 </html>

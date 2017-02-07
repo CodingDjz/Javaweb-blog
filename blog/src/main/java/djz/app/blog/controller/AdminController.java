@@ -41,7 +41,7 @@ public class AdminController {
 		} else {
 			mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.LOGIN_FAILD);
 		}
-		mav.setViewName(ConstantSet.ACTION_RESULT_VIEW);
+		mav.setViewName(ConstantSet.ADMIN_ACTION_VIEW);
 		return mav;
 	}
 	
@@ -49,6 +49,12 @@ public class AdminController {
 	@RequestMapping("/registPage")
 	public ModelAndView registPage(){
 		ModelAndView mav = new ModelAndView();
+		Admin admin = new Admin();
+		admin.setAccount("admin");
+		admin.setPassword("admin");
+		admin.setName("丁君之");
+		admin.setLevel(3);;
+		adminService.regist(admin);
 		mav.setViewName(ConstantSet.ADMIN_ACTION_VIEW);
 		return mav;
 	}

@@ -15,18 +15,16 @@
 	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/admin_action.js"></script>
 </head>
 <body>
 	<div id="opt_div">
 		<table class="table">
 			<tr>
+				<td><input type="button" onclick="article_savePage()"
+					class="btn btn-md btn-primary" value="添加文章"></td>
 				<td><input type="button" class="btn btn-md btn-primary"
-					value="添加文章"> <input type="button"
-					class="btn btn-md btn-primary" value="删除文章"></td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-md btn-primary"
-					value="添加管理员"></td>
+					value="删除文章"></td>
 			</tr>
 		</table>
 	</div>
