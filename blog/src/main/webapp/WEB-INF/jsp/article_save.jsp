@@ -11,6 +11,8 @@
 	href="<%=request.getContextPath()%>/css/article_save.css">
 <script
 	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/article_save.js"></script>
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -18,16 +20,25 @@
 	<div id="aboveDiv">文章录入</div>
 	<div id="mainDiv">
 		<form action="<%=request.getContextPath()%>/article/save"
-			method="post" enctype="multipart/form-data" role="form">
+			method="post" enctype="multipart/form-data" role="form"
+			onsubmit="return formCheck()">
 			<div class="form-group">
 				<label for="title" class="control-label">标题</label> <input
 					type="text" name="title" class="form-control" id="title"
 					placeholder="文章标题">
 			</div>
 			<div class="form-group">
-				<label for="category" class="control-label">类别</label> <input
+				<label for="category" class="control-label">类别</label>
+				<!-- <input
 					type="text" name="category" class="form-control" id="category"
-					placeholder="文章分类">
+					placeholder="文章分类"> -->
+				<select id="category" name="category" class="form-control">
+					<option value="-1">---请选择---</option>
+					<option value="1">技术</option>
+					<option value="2">娱乐</option>
+					<option value="3">故事</option>
+					<option value="4">感受</option>
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="article_file">内容文件</label> <input type="file"
