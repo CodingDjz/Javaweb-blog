@@ -1,6 +1,8 @@
 package djz.app.blog.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ public class AdminController {
 
 	/**
 	 * 跳转到登录界面
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/loginPage")
@@ -33,27 +36,38 @@ public class AdminController {
 	 * @param admin
 	 */
 	@RequestMapping("/login")
-	public ModelAndView login(Admin admin) {
+	public ModelAndView login(Admin admin, HttpSession httpSession, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView();
+		if(admin.getAccount() == null || admin.getPassword()==null){
+			mav.setViewName(ConstantSet.LOGIN_VIEW);
+			mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.LOGIN_FAILD);
+			mav.addObject(ConstantSet.RESULT_MSG, ConstantSet.PLEASE_LOGIN_FIRST);
+			return mav;
+		}
+		
 		Admin currentAdmin = adminService.login(admin);
 		if (currentAdmin != null) {
 			mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.LOGIN_SUCCESS);
+			httpSession.setAttribute("adminAccount", admin.getAccount());
+			mav.setViewName(ConstantSet.ADMIN_ACTION_VIEW);
 		} else {
 			mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.LOGIN_FAILD);
+			mav.addObject(ConstantSet.RESULT_MSG, ConstantSet.ACCOUNT_PWD_ERR);
+			mav.setViewName(ConstantSet.LOGIN_VIEW);
 		}
-		mav.setViewName(ConstantSet.ADMIN_ACTION_VIEW);
+
 		return mav;
 	}
-	
-	
+
 	@RequestMapping("/registPage")
-	public ModelAndView registPage(){
+	public ModelAndView registPage() {
 		ModelAndView mav = new ModelAndView();
 		Admin admin = new Admin();
 		admin.setAccount("admin");
 		admin.setPassword("admin");
 		admin.setName("丁君之");
-		admin.setLevel(3);;
+		admin.setLevel(3);
+		;
 		adminService.regist(admin);
 		mav.setViewName(ConstantSet.ADMIN_ACTION_VIEW);
 		return mav;

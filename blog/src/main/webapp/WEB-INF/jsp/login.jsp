@@ -14,28 +14,34 @@
 	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/login.js"></script>
 <script src="${pageContext.request.contextPath}/js/regist.js"></script>
 </head>
 <body>
 
 	<div id="formDiv">
-
 		<form class="signin" method="post"
 			action="<%=request.getContextPath()%>/admin/login"
-			accept-charset="UTF-8">
+			accept-charset="UTF-8" onsubmit="return loginCheck()">
 			<h2 class="form-signin-heading">登录</h2>
 			<div class="form-group">
-				<input type="text" name="account" class="form-control"
+				<input id="account" type="text" name="account" class="form-control"
 					placeholder="请输入用户名" />
 			</div>
 			<div class="form-group">
-				<input type="password" name="password" class="form-control"
-					placeholder="请输入密码" />
-			</div>
+				<input id="password" type="password" name="password"
+					class="form-control" placeholder="请输入密码" />
+			</div id="result_msg" class="form-group" >
+			<% if(request.getAttribute("result_msg")!=""){%>
+			<font color="#F00">${result_msg} </font>
+			<% }%>
 
+			<div></div>
 			<div class="form-group" style="text-align: center;">
 				<input type="submit" class="btn btn-md btn-primary" value="登录">
-				<input type="button" onclick="registPage()"	class="btn btn-md btn-primary" value="注册"> 
+				<input type="button" onclick="registPage()"
+					class="btn btn-md btn-primary" value="注册">
 			</div>
 		</form>
 	</div>
