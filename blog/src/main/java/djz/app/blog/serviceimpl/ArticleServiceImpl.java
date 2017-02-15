@@ -5,19 +5,29 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import djz.app.blog.dao.BaseDao;
 import djz.app.blog.model.Article;
 import djz.app.blog.service.ArticleService;
 import djz.app.blog.util.ConstantSet;
 
 @Service("articleService")
 public class ArticleServiceImpl extends BaseServiceImpl<Article> implements ArticleService {
-	
+
 	String contentPath;
+	
+	
+	
+	@Resource(name="articleDao")
+	public void setDao(BaseDao<Article> dao) {
+		// TODO Auto-generated method stub
+		super.setDao(dao);
+	}
 
 	@Override
 	public Serializable save(Article entity) {
@@ -57,5 +67,20 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 		Date date = new Date();
 		article.setCreateTime(date);
 		article.setContentPath(contentPath);
+	}
+
+	/**
+	 * 通过文章id获取文章内容
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public String getContentById(String id) {
+		Article article = findById(id);
+		if (article != null) {
+			System.out.println(article.getContentPath());
+		}
+		return null;
 	}
 }

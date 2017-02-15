@@ -1,7 +1,11 @@
 package djz.app.blog.daoimpl;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
+
+import javax.swing.text.html.HTML.Tag;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,15 +21,21 @@ import djz.app.blog.dao.BaseDao;
 @Transactional
 public class BaseDaoImpl<T> implements BaseDao<T> {
 
-	private Class<T> clazz; 
+	private Class<T> clazz;
+	private String Tag = null;
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	public BaseDaoImpl() {
-
-//		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
-//		clazz = (Class<T>) type.getActualTypeArguments()[0];
-//		System.out.println("DAO的实现类是：" + this.clazz.getName());
+		Type type = this.getClass().getGenericSuperclass();
+		// 要使用判定，因为第一个对象是BaseDaoImpl，这个不能进行强转（父类是obj）
+		if (type instanceof ParameterizedType) {
+			ParameterizedType parameterizedType = (ParameterizedType) type;
+			clazz = (Class<T>) parameterizedType.getActualTypeArguments()[0];
+			System.out.println("DAO的实现类是：" + this.clazz.getName());
+		} else {
+			Tag = "elsetag";
+		}
 	}
 
 	/**
@@ -66,9 +76,19 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	}
 
+	/**
+	 * 通过主键获得对象
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@Override
 	public T findById(Serializable id) {
+		if (clazz == null) {
+			return null;
+		}
 		return this.getCurrentSession().get(this.clazz, id);
+
 	}
 
 	/**

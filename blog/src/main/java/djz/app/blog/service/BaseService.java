@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface BaseService<T> {
-	public Serializable save(T entity);
+	Serializable save(T entity);
 
-	public boolean update(T entity);
+	boolean update(T entity);
 
-	public boolean delete(Serializable id);
+	boolean delete(Serializable id);
 
-	public T findById(Serializable id);
+	T findById(Serializable id);
 
-	public List<T> findByHQL(String hql, Object... params);
+	List<T> findByHQL(String hql, Object... params);
 }

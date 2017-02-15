@@ -7,7 +7,9 @@ import org.springframework.web.multipart.MultipartFile;
 import djz.app.blog.model.Article;
 
 public interface ArticleService extends BaseService<Article> {
-	public void saveArticleContentFile(MultipartFile contentFile, HttpServletRequest request);
+	void saveArticleContentFile(MultipartFile contentFile, HttpServletRequest request);
 
-	public void setArticleValue(Article article);
+	void setArticleValue(Article article);
+	
+	String getContentById(String id);
 }

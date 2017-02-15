@@ -27,8 +27,8 @@ public class Article {
 	private String contentPath;
 	@Column(name = "category")
 	private Integer category;
-	@Column(name = "is_original")
-	private Boolean isOriginal;
+	@Column(name = "original")
+	private Boolean original;
 
 	public Article() {
 		super();
@@ -78,12 +78,12 @@ public class Article {
 		this.category = category;
 	}
 
-	public Boolean getIsOriginal() {
-		return isOriginal;
+	public Boolean getOriginal() {
+		return original;
 	}
 
-	public void setIsOriginal(Boolean isOriginal) {
-		this.isOriginal = isOriginal;
+	public void setOriginal(Boolean original) {
+		this.original = original;
 	}
 
 }

@@ -32,7 +32,7 @@ public class ArticleController {
 
 		ArrayList<Article> articles = (ArrayList<Article>) articleService.findByHQL("from Article", null);
 		mav.addObject("articles", articles);
-		mav.setViewName("article");
+		mav.setViewName("article_list");
 		return mav;
 	}
 
@@ -67,6 +67,18 @@ public class ArticleController {
 	public ModelAndView saveArticleView() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/article_save");
+		return mav;
+	}
+
+	/**
+	 * 取得内容文章内容
+	 * @param articleId
+	 * @return
+	 */
+	@RequestMapping("/articleContent")
+	public ModelAndView articleContent(String articleId) {
+		ModelAndView mav = new ModelAndView();
+		articleService.getContentById(articleId);
 		return mav;
 	}
 }
