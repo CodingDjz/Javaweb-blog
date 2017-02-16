@@ -3,6 +3,7 @@ package djz.app.blog.controller;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -78,7 +79,9 @@ public class ArticleController {
 	@RequestMapping("/articleContent")
 	public ModelAndView articleContent(String articleId) {
 		ModelAndView mav = new ModelAndView();
-		articleService.getContentById(articleId);
+		String content = articleService.getContentById(articleId);
+		mav.addObject("article_content", content);
+		mav.setViewName("article.jsp");
 		return mav;
 	}
 }

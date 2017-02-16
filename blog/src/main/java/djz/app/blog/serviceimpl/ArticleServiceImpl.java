@@ -1,13 +1,17 @@
 package djz.app.blog.serviceimpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicInterface2;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,10 +24,8 @@ import djz.app.blog.util.ConstantSet;
 public class ArticleServiceImpl extends BaseServiceImpl<Article> implements ArticleService {
 
 	String contentPath;
-	
-	
-	
-	@Resource(name="articleDao")
+
+	@Resource(name = "articleDao")
 	public void setDao(BaseDao<Article> dao) {
 		// TODO Auto-generated method stub
 		super.setDao(dao);
@@ -77,10 +79,46 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 	 */
 	@Override
 	public String getContentById(String id) {
-		Article article = findById(id);
+		Article article = findById(Long.parseLong(id));
+		String content = null;
 		if (article != null) {
 			System.out.println(article.getContentPath());
+			content = getContentByPath(article.getContentPath());
 		}
-		return null;
+		return content;
+	}
+
+	private String getContentByPath(String contentPath) {
+
+		System.out.println("user.dir:" + System.getProperty("user.dir"));
+		System.out.println("catalina.home:" + System.getProperty("catalina.home"));
+		System.out.println("location:" + this.getClass().getResource("/").getPath());
+		contentPath = System.getProperty("catalina.home") + "\\webapps\\blog" + contentPath;
+
+		File file = new File(contentPath);
+		boolean a = file.exists();
+		FileReader fileReader = null;
+		String content = "";
+		try {
+			fileReader = new FileReader(file);
+			int index = 0;
+			
+			while ((index = fileReader.read()) != -1) {
+				content += (char)index;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (fileReader != null) {
+				try {
+					fileReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return content;
 	}
 }
