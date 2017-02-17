@@ -11,5 +11,5 @@ public interface ArticleService extends BaseService<Article> {
 
 	void setArticleValue(Article article);
 	
-	String getContentById(String id);
+	String getArticleContent(Article article);
 }

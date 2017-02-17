@@ -78,8 +78,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 	 * @return
 	 */
 	@Override
-	public String getContentById(String id) {
-		Article article = findById(Long.parseLong(id));
+	public String getArticleContent(Article article) {
 		String content = null;
 		if (article != null) {
 			System.out.println(article.getContentPath());
@@ -121,4 +120,5 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 		}
 		return content;
 	}
+	
 }

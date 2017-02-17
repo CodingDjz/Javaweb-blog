@@ -28,6 +28,7 @@ public class ConstantSet {
 	public static final String LOGIN_VIEW = "login";
 	public static final String REGIST_VIEW = "regist";
 	public static final String ADMIN_ACTION_VIEW = "admin_action";
+	public static final String ARTICLE_VIEW = "article";
 	// Category mapping
 	public static final int CATEGORY_UNKNOWN = 0;
 	public static final int CATEGORY_TECHNOLOGY = 1;

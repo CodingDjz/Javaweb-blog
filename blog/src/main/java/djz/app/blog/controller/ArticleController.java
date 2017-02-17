@@ -79,9 +79,12 @@ public class ArticleController {
 	@RequestMapping("/articleContent")
 	public ModelAndView articleContent(String articleId) {
 		ModelAndView mav = new ModelAndView();
-		String content = articleService.getContentById(articleId);
+		Article article = articleService.findById(Long.parseLong(articleId));
+		String content = articleService.getArticleContent(article);
 		mav.addObject("article_content", content);
-		mav.setViewName("article.jsp");
+		mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.SUCCESS_CODE);
+		mav.addObject("article_title",article.getTitle());
+		mav.setViewName("article");
 		return mav;
 	}
 }

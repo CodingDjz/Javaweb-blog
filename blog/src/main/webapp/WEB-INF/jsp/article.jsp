@@ -4,15 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>${title}</title>
+<title>${article_title}</title>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.js"></script>
 <script src="<%=request.getContextPath()%>/js/article.js"></script>
 </head>
-<body>
+<body onload="mdView()">
 	<div id="mainDiv">
-		<div id="artivle_content">
-			
+		<div id="mdDiv">
+			<textarea id="article_content" type="hidden">${article_content}</textarea>
 		</div>
+	</div>
+	<!-- <div id="inputDiv">
+			<textarea id="mdInput" oninput=""></textarea>
+		</div>
+
+		<div id="mdPreview"></div> -->
 	</div>
 </body>
 </html>

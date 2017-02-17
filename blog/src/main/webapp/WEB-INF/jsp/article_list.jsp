@@ -8,12 +8,26 @@
 <title>文章列表</title>
 <link rel="stylesheet"
 	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/article_list.css">
-<script
-	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/article_list.css">
+<script type="text/javascript">
+	var renderer_zai30 = new marked.Renderer();
+	marked.setOptions({
+		renderer : renderer_zai30,
+		gfm : true,
+		tables : true,
+		breaks : true,//回车换成br
+		pedantic : false,
+		sanitize : true,
+		smartLists : true,
+		smartypants : false
+	});
+	<script
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js">
+</script>
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="<%=request.getContextPath()%>/js/article_list.js"></script>
+<script src="<%=request.getContextPath()%>/js/article_list.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" style="opacity:0.9"
@@ -25,19 +39,24 @@
 				<span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<%=request.getContextPath() %>/admin/loginPage" target="_blank">知&nbsp; &nbsp;道</a>
+			<a class="navbar-brand"
+				href="<%=request.getContextPath()%>/admin/loginPage"
+				target="_blank">知&nbsp; &nbsp;道</a>
 		</div>
 		<div class="collapse navbar-collapse" id="example-navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a
-					href="./main">Blog</a></li>
+				<li class="active"><a href="./main">Blog</a></li>
 				<li class=""><a
-					href="http://www.jianshu.com/users/fcf56eda9143/latest_articles" target="_blank">简书</a></li>
-				<li class=""><a href="https://github.com/CodingDjz" target="_blank">Github</a></li>
+					href="http://www.jianshu.com/users/fcf56eda9143/latest_articles"
+					target="_blank">简书</a></li>
+				<li class=""><a href="https://github.com/CodingDjz"
+					target="_blank">Github</a></li>
 				<li class=""><a
 					href="https://github.com/CodingDjz/MyGuitarMusic" target="_blank">吉他弹唱</a></li>
 				<li class="">&nbsp; &nbsp;</li>
-				<li class=""><a href="<%=request.getContextPath() %>/article/savePage" target="_blank">留言</a></li>
+				<li class=""><a
+					href="<%=request.getContextPath()%>/article/savePage"
+					target="_blank">留言</a></li>
 
 			</ul>
 		</div>
@@ -57,7 +76,7 @@
 			<tbody>
 				<c:forEach items="${articles}" var="article">
 					<tr onclick="articleContent()">
-						<td><input id="articleId" type="hidden" value="${article.id}"/></td>
+						<td><input id="articleId" type="hidden" value="${article.id}" /></td>
 						<td><a>${article.title}</a></td>
 						<td>${article.createTime}</td>
 					</tr>
