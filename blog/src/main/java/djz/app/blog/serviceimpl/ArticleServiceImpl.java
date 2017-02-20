@@ -95,7 +95,6 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 		contentPath = System.getProperty("catalina.home") + "\\webapps\\blog" + contentPath;
 
 		File file = new File(contentPath);
-		boolean a = file.exists();
 		FileReader fileReader = null;
 		String content = "";
 		try {

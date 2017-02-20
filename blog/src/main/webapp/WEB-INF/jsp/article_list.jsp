@@ -10,20 +10,12 @@
 	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/article_list.css">
-<script type="text/javascript">
-	var renderer_zai30 = new marked.Renderer();
-	marked.setOptions({
-		renderer : renderer_zai30,
-		gfm : true,
-		tables : true,
-		breaks : true,//回车换成br
-		pedantic : false,
-		sanitize : true,
-		smartLists : true,
-		smartypants : false
-	});
-	<script
+<script
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script
 	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js">
+	
 </script>
 <script
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,8 +32,8 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/admin/loginPage"
-				target="_blank">知&nbsp; &nbsp;道</a>
+				href="<%=request.getContextPath()%>/admin/loginPage" target="_blank">知&nbsp;
+				&nbsp;道</a>
 		</div>
 		<div class="collapse navbar-collapse" id="example-navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -75,7 +67,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${articles}" var="article">
-					<tr onclick="articleContent()">
+					<tr onclick="articleContent(${article.id})">
 						<td><input id="articleId" type="hidden" value="${article.id}" /></td>
 						<td><a>${article.title}</a></td>
 						<td>${article.createTime}</td>

@@ -1,0 +1,12 @@
+#content,#header {
+	width: 70%;
+	margin:0 auto;
+	padding: 5px;
+	
+}
+
+body{
+	font-family: "微软雅黑";
+	background-image: url("/blog/image/slight_bgp.jpg");
+	background-size: 100%;
+}
