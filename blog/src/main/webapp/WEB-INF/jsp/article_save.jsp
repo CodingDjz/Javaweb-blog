@@ -46,9 +46,14 @@
 			</div>
 			<div class="form-group">
 				<label for="original">原创 </label> <input id="original" type="radio"
-					name="isOriginal" value="true" checked="checked"> <label
+					name="original" value="true" checked="checked"> <label
 					for="transhipment">转载 </label> <input id="transhipment"
-					type="radio" name="isOriginal" value="false">
+					type="radio" name="original" value="false">
+			</div>
+			<div class="form-group">
+				<label for="author">作者</label><input
+					type="text" name="author" class="form-control" id="author"
+					placeholder="文章作者">
 			</div>
 			<div>
 				<input type="submit" class="btn btn-md btn-primary" value="保存">

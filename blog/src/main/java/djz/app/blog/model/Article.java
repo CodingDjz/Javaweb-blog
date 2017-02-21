@@ -29,6 +29,8 @@ public class Article {
 	private Integer category;
 	@Column(name = "original")
 	private Boolean original;
+	@Column(name = "author")
+	private String author;
 
 	public Article() {
 		super();
@@ -84,6 +86,14 @@ public class Article {
 
 	public void setOriginal(Boolean original) {
 		this.original = original;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 }

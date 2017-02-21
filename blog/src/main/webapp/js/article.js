@@ -3,10 +3,10 @@ function getContent() {
 	var article_content = document.getElementById('article_content').value;
 	console.log(article_content);
 	content.innerHTML = marked(article_content);
-	
+
 }
 
-function initContent(){
+function initContent() {
 	var rendererMD = new marked.Renderer();
 	marked.setOptions({
 		renderer : rendererMD,
@@ -19,12 +19,12 @@ function initContent(){
 		smartypants : false
 	});
 	var markdownString = document.getElementById('article_content').value;
-	marked.setOptions({
-		highlight : function(code) {
-			return hljs.highlightAuto(code).value;
-		}
-	});
+	// marked.setOptions({
+	// highlight : function(code) {
+	// return hljs.highlightAuto(code).value;
+	// }
+	// });
 
 	document.getElementById('content').innerHTML = marked(markdownString);
-	
+
 }
