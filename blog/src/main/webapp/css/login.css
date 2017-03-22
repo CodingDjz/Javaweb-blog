@@ -4,7 +4,8 @@ background-size：cover---把背景图片放大到适合元素容器的尺寸，
 */
 body {
 	background-image: url("/blog/image/slight_bgp.jpg");
-	background-size: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #formDiv {

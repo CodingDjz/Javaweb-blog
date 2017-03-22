@@ -1,6 +1,7 @@
 body {
 	background-image: url('../image/welcome.png');
 	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #title {
@@ -16,7 +17,7 @@ body {
 }
 /*点击前*/
 a:link {
-	font-size: 15pt;
+	font-size: 10%;
 	color: #ccc;
 	text-decoration: underline;
 	TEXT-DECORATION: none;

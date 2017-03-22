@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />  
 <title>管理员登录</title>
 <link href="${pageContext.request.contextPath}/css/login.css"
 	rel="stylesheet" type="text/css" />
@@ -24,7 +25,7 @@
 		<form class="signin" method="post"
 			action="<%=request.getContextPath()%>/admin/login"
 			accept-charset="UTF-8" onsubmit="return loginCheck()">
-			<h2 class="form-signin-heading">登录</h2>
+			<h2 class="form-signin-heading">管理员登录</h2>
 			<div class="form-group">
 				<input id="account" type="text" name="account" class="form-control"
 					placeholder="请输入用户名" />

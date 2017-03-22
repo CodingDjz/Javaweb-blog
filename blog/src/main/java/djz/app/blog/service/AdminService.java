@@ -9,5 +9,5 @@ public interface AdminService extends BaseService<Admin> {
 
 	boolean regist(Admin admin);
 	
-	void updateMD5Password(Admin admin);
+//	void updateMD5Password(Admin admin);
 }

@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html" ;charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />  
 <title>文章列表</title>
 <link rel="stylesheet"
 	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,8 +33,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/admin/loginPage" target="_blank">知&nbsp;
-				&nbsp;道</a>
+				href="<%=request.getContextPath()%>/admin/loginPage" target="_blank">dejunz</a>
 		</div>
 		<div class="collapse navbar-collapse" id="example-navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -47,7 +47,7 @@
 					href="https://github.com/CodingDjz/MyGuitarMusic" target="_blank">吉他弹唱</a></li>
 				<li class="">&nbsp; &nbsp;</li>
 				<li class=""><a
-					href="<%=request.getContextPath()%>/article/savePage"
+					href="<%=request.getContextPath()%>/handle/developing"
 					target="_blank">留言</a></li>
 
 			</ul>
@@ -55,7 +55,7 @@
 	</div>
 	</nav>
 
-	<div style="margin: 5% 5% 5% 5%;">
+	<div style="margin: 5% 5% 5% 5%; padding-top: 5%">
 		<!-- table-striped是斑马线设置！ -->
 		<table class="table table-hover table-striped">
 			<thead>

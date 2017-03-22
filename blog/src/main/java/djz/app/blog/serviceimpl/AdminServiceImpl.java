@@ -54,7 +54,7 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 	 */
 	@Override
 	public Admin login(Admin admin) {
-		updateMD5Password(admin);
+		admin = AdminUtil.updateMD5Password(admin);
 		boolean valiFlag = validateAdmin(admin);
 		if (valiFlag == false) {
 			return null;
@@ -71,7 +71,7 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 	 */
 	@Override
 	public boolean regist(Admin admin) {
-		updateMD5Password(admin);
+		admin = AdminUtil.updateMD5Password(admin);
 		String hql = "FROM Admin WHERE account=?";
 		String[] params = { admin.getAccount() };
 		ArrayList<Admin> admins = (ArrayList<Admin>) adminDao.findByHQL(hql, params);
@@ -82,20 +82,6 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminSer
 		return true;
 	}
 
-	/**
-	 * 将Admin密码通过MD5加密
-	 * 
-	 * @param admin
-	 */
-	@Override
-	public void updateMD5Password(Admin admin) {
-		try {
-			String MD5Password = AdminUtil.MD5Encode(admin.getPassword());
-			admin.setPassword(MD5Password);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-
-	}
+	
 
 }

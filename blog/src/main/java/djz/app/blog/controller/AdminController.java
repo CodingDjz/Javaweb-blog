@@ -1,5 +1,7 @@
 package djz.app.blog.controller;
 
+import java.util.Properties;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import djz.app.blog.model.Admin;
 import djz.app.blog.service.AdminService;
+import djz.app.blog.util.AdminUtil;
 import djz.app.blog.util.ConstantSet;
 
 @Controller
@@ -59,16 +62,17 @@ public class AdminController {
 		return mav;
 	}
 
-	@RequestMapping("/registPage")
+	@RequestMapping("/registRoot")
 	public ModelAndView registPage() {
 		ModelAndView mav = new ModelAndView();
+		Properties adminProp = AdminUtil.getRootAdminProp();
 		Admin admin = new Admin();
-		admin.setAccount("admin");
-		admin.setPassword("admin");
-		admin.setName("丁君之");
-		admin.setLevel(3);
-		;
+		admin.setAccount(adminProp.getProperty("account"));
+		admin.setPassword(adminProp.getProperty("password"));
+		admin.setName(adminProp.getProperty("name"));
+		admin.setLevel(Integer.parseInt(adminProp.getProperty("level")));
 		adminService.regist(admin);
+		mav.addObject(ConstantSet.RESULT_CODE, ConstantSet.LOGIN_SUCCESS);
 		mav.setViewName(ConstantSet.ADMIN_ACTION_VIEW);
 		return mav;
 	}

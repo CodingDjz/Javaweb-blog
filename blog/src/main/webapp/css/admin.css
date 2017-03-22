@@ -1,7 +1,8 @@
 body {
 	background-image: url('${pageContext.request.contextPath}/image/admin-bgp.png');
 	background-size: cover;
-}
+	background-repeat: no-repeat;
+	}
 
 table {
     margin-right: auto;

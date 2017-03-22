@@ -1,3 +1,3 @@
 function registPage(){
-	window.location.href="/blog/admin/registPage"
+	window.location.href="/blog/admin/registRoot"
 }
