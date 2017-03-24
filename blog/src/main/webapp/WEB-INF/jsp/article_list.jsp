@@ -22,7 +22,7 @@
 	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/article_list.js"></script>
 </head>
-<body>
+<body style="padding-top: 40px;">
 	<nav class="navbar navbar-inverse navbar-fixed-top" style="opacity:0.9"
 		role="navigation">
 	<div class="container-fluid">

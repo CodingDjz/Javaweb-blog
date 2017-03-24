@@ -49,6 +49,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 		}
 		// 这里没有/blog
 		String relativePath = ConstantSet.ARTICLE_FILE_PATH + File.separator + contentFile.getOriginalFilename();
+		///home/apache-tomcat-7.0.75\webapps\blog/WEB-INF/article/『算法』通过斐波那契函数思考递归调用.txt
 		// E:\tomcat\apache-tomcat-7.0.72\webapps\blog\
 		String realPath = request.getServletContext().getRealPath(relativePath);
 		File file = new File(realPath);
@@ -92,7 +93,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
 		System.out.println("user.dir:" + System.getProperty("user.dir"));
 		System.out.println("catalina.home:" + System.getProperty("catalina.home"));
 		System.out.println("location:" + this.getClass().getResource("/").getPath());
-		contentPath = System.getProperty("catalina.home") + "\\webapps\\blog" + contentPath;
+		contentPath = System.getProperty("catalina.home") + File.separator+"webapps"+File.separator+"blog" + contentPath;
 
 		File file = new File(contentPath);
 		FileReader fileReader = null;

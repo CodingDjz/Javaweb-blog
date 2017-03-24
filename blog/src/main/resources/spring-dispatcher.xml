@@ -29,6 +29,10 @@
 			<mvc:mapping path="/admin/admin_action"/>
 			<bean class="djz.app.blog.interceptor.AdminInterceptor"></bean>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/article/main"/>
+			<bean class="djz.app.blog.interceptor.FlowCountInterceptor"></bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

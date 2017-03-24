@@ -4,20 +4,24 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />  
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 <title>dejunz的主页</title>
 <link href="./css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div id="title">
-		<h1>dejunz</h1>
-	</div>
-
 	<div>
-		<h3 id="click_in">
+		<h1 id="click_in">
 			<a href="<%=request.getContextPath()%>/article/main">点击进入</a>
-			
-		</h3>
+		</h1>
+	</div>
+	<div>
+		<img alt="programmer"
+			src="<%=request.getContextPath()%>/image/welcome.png">
+	</div>
+	<div>
+		<footer id="record">
+		<a href="http://www.miitbeian.gov.cn/">京ICP备17014652号-1</a></footer>
 	</div>
 </body>
 </html>
