@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8" />
 <meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+        content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no" />
+
 <title>dejunz的主页</title>
 <link href="./css/index.css" rel="stylesheet" type="text/css" />
 </head>
