@@ -4,9 +4,14 @@
 	padding: 5px;
 	
 }
+blockquote {
+	border-left: 3px solid #ccc;
+	background-color: #F7F7F7;
+	margin-left: 4em;
+}
 
 body{
 	font-family: "微软雅黑";
-	background-image: url("/blog/image/slight_bgp.jpg");
+	/* background-image: url("/blog/image/slight_bgp.jpg");*/
 	background-size: 100%;
 }

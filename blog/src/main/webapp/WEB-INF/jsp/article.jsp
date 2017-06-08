@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />  
+<meta name="viewport" content="width=device-width, initial-scale=0.3, minimum-scale=0.3, maximum-scale=1.0, user-scalable=yes" />  
 <title>${article_title}</title>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.js"></script>
 <script src="<%=request.getContextPath()%>/js/article.js"></script>
