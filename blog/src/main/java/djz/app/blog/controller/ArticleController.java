@@ -1,6 +1,8 @@
 package djz.app.blog.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
@@ -32,6 +34,7 @@ public class ArticleController {
 		ModelAndView mav = new ModelAndView();
 
 		ArrayList<Article> articles = (ArrayList<Article>) articleService.findByHQL("from Article", null);
+		Collections.reverse(articles);
 		mav.addObject("articles", articles);
 		mav.setViewName("article_list");
 		return mav;

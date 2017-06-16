@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html" ;charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />  
+<meta name="viewport" content="width=device-width, initial-scale=0.7, minimum-scale=0.7, maximum-scale=2.0, user-scalable=yes" />  
 <title>文章列表</title>
 <link rel="stylesheet"
 	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -68,7 +68,7 @@
 			<tbody>
 				<c:forEach items="${articles}" var="article">
 					<tr onclick="articleContent(${article.id})">
-						<td><input id="articleId" type="hidden" value="${article.id}" /></td>
+						<td style="display:none;"><input id="articleId" type="hidden" value="${article.id}" /></td>
 						<td><a>${article.title}</a></td>
 						<td>${article.createTime}</td>
 					</tr>
